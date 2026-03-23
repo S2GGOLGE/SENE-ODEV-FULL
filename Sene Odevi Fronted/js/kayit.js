@@ -12,7 +12,7 @@ function kayit() {
 
     let password = document.getElementById("pass").value;
     let passRepeat = document.getElementById("passRepeat").value;
-//Backend e Bağlan ardından parametleri post et
+    //Backend e Bağlan ardından parametleri post et
     fetch("https://localhost:7074/Sign_up", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
