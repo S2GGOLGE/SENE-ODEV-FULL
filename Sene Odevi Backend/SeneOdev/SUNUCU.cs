@@ -5,6 +5,7 @@ namespace SeneOdev
 {
     public class SUNUCU
     {
+        //Sunucuya bağlanmak için bir client hata alıyorum 
         public static string Client(string ip, int port)
         {
             using TcpClient client = new TcpClient(ip, port);

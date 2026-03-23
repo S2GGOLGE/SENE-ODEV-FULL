@@ -1,4 +1,5 @@
 function kayit() {
+    //Aşagı tanımlanan Parametreleri Tanımlanmıştır ve Id ler Verimiştir
     let ad = document.getElementById("name").value;
     let soyad = document.getElementById("surname").value;
     let username = document.getElementById("username").value;
@@ -11,7 +12,7 @@ function kayit() {
 
     let password = document.getElementById("pass").value;
     let passRepeat = document.getElementById("passRepeat").value;
-
+//Backend e Bağlan ardından parametleri post et
     fetch("https://localhost:7074/Sign_up", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -30,10 +31,11 @@ function kayit() {
         .then(data => {
             alert(data.message)
             if (data.success) {   // backend tarafında success = true dönüyorsa
-                window.location.href = "login.html"; // istediğin sayfaya yönlendir
+                window.location.href = "login.html"; // Login e git 
             }
         })
         .catch(err => {
+            //Hata Olur ise consola yazdır 
             console.error("Fetch hatası:", err);
         });
 }

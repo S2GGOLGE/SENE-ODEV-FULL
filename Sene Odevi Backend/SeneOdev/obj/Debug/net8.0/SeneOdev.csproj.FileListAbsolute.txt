@@ -302,3 +302,4 @@ C:\Users\DELL\OneDrive\Masaüstü\Projeler\Sene Odevi\Sene Odevi Backend\SeneOde
 C:\Users\DELL\OneDrive\Masaüstü\Projeler\Sene Odevi\Sene Odevi Backend\SeneOdev\obj\Debug\net8.0\SeneOdev.pdb
 C:\Users\DELL\OneDrive\Masaüstü\Projeler\Sene Odevi\Sene Odevi Backend\SeneOdev\obj\Debug\net8.0\SeneOdev.genruntimeconfig.cache
 C:\Users\DELL\OneDrive\Masaüstü\Projeler\Sene Odevi\Sene Odevi Backend\SeneOdev\obj\Debug\net8.0\ref\SeneOdev.dll
+C:\Users\DELL\OneDrive\Masaüstü\Projeler\Sene Odevi\Sene Odevi Backend\SeneOdev\obj\Debug\net8.0\SeneOdev.sourcelink.json

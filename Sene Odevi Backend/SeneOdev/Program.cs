@@ -4,6 +4,7 @@ using SeneOdev;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// CORS politikası ekle: tüm kaynaklardan gelen istekleri kabul et
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -28,9 +29,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-//LOGİN
+
+// LOGIN ENDPOINT
 app.MapPost("/login", ([FromBody] LoginRequest request) =>
 {
+    // Frontend'den gelen login isteğini CMD ekranına yazdır
     Console.WriteLine("LOGIN İSTEĞİ GELDİ");
     Console.WriteLine($"Username: {request.Username}");
     Console.WriteLine($"Password: {request.Password}");
@@ -42,9 +45,11 @@ app.MapPost("/login", ([FromBody] LoginRequest request) =>
 
     return Results.BadRequest(new { success = false, message = sonuc });
 });
-//SİNG UP
+
+// SIGNUP ENDPOINT
 app.MapPost("/sign_up", ([FromBody] SignupRequest request) =>
 {
+    // Frontend'den gelen kayıt isteğini CMD ekranına yazdır
     Console.WriteLine("SIGNUP İSTEĞİ GELDİ");
     Console.WriteLine($"Name: {request.Name}");
     Console.WriteLine($"Surname: {request.Surname}");
@@ -57,6 +62,7 @@ app.MapPost("/sign_up", ([FromBody] SignupRequest request) =>
 
     var user = new KayitOl
     {
+        // Yeni kullanıcı ekle
         Name = request.Name,
         Surname = request.Surname,
         Username = request.Username,
@@ -74,10 +80,12 @@ app.MapPost("/sign_up", ([FromBody] SignupRequest request) =>
 
     return Results.BadRequest(new { success = false, message = "Kayıt başarısız" });
 });
-//ADMİN LOGİN
+
+// ADMIN LOGIN ENDPOINT
 app.MapPost("/adminlogin", ([FromBody] AdminLoginRequest request) =>
 {
-    Console.WriteLine("ADMİN İSTEĞİ GELDİ");
+    // Admin giriş isteğini CMD ekranına yazdır
+    Console.WriteLine("ADMIN LOGIN İSTEĞİ GELDİ");
     Console.WriteLine($"Username: {request.Username}");
     Console.WriteLine($"Password: {request.Password}");
 
@@ -88,14 +96,22 @@ app.MapPost("/adminlogin", ([FromBody] AdminLoginRequest request) =>
 
     return Results.BadRequest(new { success = false, message = sonuc });
 });
+
+// SUNUCU ENDPOINT (henüz hazır değil)
 app.MapGet("/sunucu", ([FromBody] AdminLoginRequest request) =>
 {
     SUNUCU.Client("127.0.0.1", 8587);
 });
 
 app.Run();
-// DTO
-public record LoginRequest(string Username, string Password);
+
+// DTO TANIMLARI
+// DTO: Data Transfer Object, veri kapsülleme için kullanılır, mantıksal işlem içermez
+public record LoginRequest(
+    string Username,
+    string Password
+);
+
 public record SignupRequest(
     string Name,
     string Surname,
@@ -111,4 +127,4 @@ public record AdminLoginRequest(
     string Username,
     string Password,
     string Role
-); 
+);

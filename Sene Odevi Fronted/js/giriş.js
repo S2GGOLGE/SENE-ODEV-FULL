@@ -1,7 +1,8 @@
 function login() {
+    //Parametler ve Id Ler tanınlanmıştır 
     let user = document.getElementById("user").value;
     let pass = document.getElementById("pass").value;
-
+    // Backend e Bağlan ardından User ve pass adlı değişkenleri gonder 
     fetch("https://localhost:7074/login", {
         method: "POST",
         headers: {
@@ -12,24 +13,25 @@ function login() {
             Password: pass
         })
     })
-    .then(async res => {
+        .then(async res => {
 
-        const data = await res.json().catch(() => null);
+            const data = await res.json().catch(() => null);
 
-        if (!res.ok) {
-            alert(data?.message || "Kullanıcı adı veya şifre hatalı");
-            return;
-        }
+            if (!res.ok) {
+                alert(data?.message || "Kullanıcı adı veya şifre hatalı");
+                return;
+            }
 
-        alert(data?.message || "Giriş başarılı!");
-        window.location.href = "index.html";
-    })
-    .catch(err => {
-        console.error("Fetch hatası:", err);
-        alert("Sunucuya bağlanılamadı!");
-    });
+            alert(data?.message || "Giriş başarılı!"); //Backend Onaylar ise devam et
+            window.location.href = "index.html";
+        })
+        .catch(err => {
+            console.error("Fetch hatası:", err);
+            alert("Sunucuya bağlanılamadı!");
+        });
 }
 
 function kayıt() {
+    //Kayıt Ol sayfasına yonlendirme
     window.location.href = "kayıtol.html";
 }
