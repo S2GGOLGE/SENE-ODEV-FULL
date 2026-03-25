@@ -47,7 +47,7 @@ namespace SeneOdev
         {
 
             if(string.IsNullOrWhiteSpace(Pass))
-                return "Lütfen Şİfrenizi girin.";
+                return "Lütfen Şifrenizi girin.";
             if (string.IsNullOrWhiteSpace(Passtekrar))
                 return "Lutfen Şifrenizi Tekrar Giriniz giriniz";
             return "OK";
