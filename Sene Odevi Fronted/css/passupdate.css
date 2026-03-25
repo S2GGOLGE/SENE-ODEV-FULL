@@ -1,57 +1,17 @@
+/* GENEL BODY */
 body {
-    background: linear-gradient(to left, #4A90E2, #286ab4, #0571ec);
-    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* Gradient background animasyonu */
+    background: linear-gradient(270deg, #4A90E2, #286ab4, #0571ec);
+    background-size: 600% 600%;
+    animation: bgAnim 20s ease infinite;
 
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
-
-/* CONTAINER */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-/* FORM */
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    width: 300px;
-    padding: 20px;
-
-    border-radius: 12px;
-    background-color: rgba(23, 57, 211, 0.85);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* INPUT */
-.form input {
-    height: 35px;
-    border-radius: 6px;
-    border: none;
-    padding: 5px;
-    font-size: 14px;
-}
-
-/* BUTTON */
-.Update-btn {
-    background-color: white;
-    height: 35px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.Update-btn:hover {
-    transform: scale(1.05);
 }
 
 /* MENU */
@@ -71,4 +31,82 @@ body {
 .menu a {
     color: white;
     text-decoration: none;
+    font-weight: bold;
+}
+
+/* CONTAINER */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    animation: containerAnim 15s ease-in-out infinite;
+}
+
+/* FORM */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    width: 300px;
+    padding: 20px;
+
+    border-radius: 12px;
+    background-color: rgba(23, 57, 211, 0.85);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+    /* Hover scale */
+    transition: transform 0.3s ease;
+}
+
+.form:hover {
+    transform: scale(1.05);
+}
+
+/* INPUT */
+.form input {
+    height: 35px;
+    border-radius: 6px;
+    border: none;
+    padding: 5px;
+    font-size: 14px;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form input:hover {
+    transform: scale(1.03);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* BUTTON */
+.Update-btn {
+    background-color: white;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.Update-btn:hover {
+    transform: scale(1.05);
+    background-color: #f0f0f0;
+}
+
+/* ANIMATIONS */
+
+/* Background gradient animasyonu */
+@keyframes bgAnim {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Container yavaş hareket animasyonu */
+@keyframes containerAnim {
+    0%   { transform: translateY(0); opacity: 1; }
+    50%  { transform: translateY(10px); opacity: 0.95; }
+    100% { transform: translateY(0); opacity: 1; }
 }
