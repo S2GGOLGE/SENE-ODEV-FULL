@@ -1,7 +1,7 @@
+using SeneOdev;
 using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
-using SeneOdev;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -107,9 +107,14 @@ app.MapPost("/sunucu", ([FromBody] AdminLoginRequest request) =>
 });
 
 // PassUpdate ENDPOINT
-app.MapPost(" /PassUpdate", ([FromBody]PassUpdateRequest request) =>
+app.MapPost("/updatepass", (PassUpdate model) =>
 {
+   
+    var result = model.Update();
 
+    return result
+        ? Results.Ok("Şifre güncellendi")
+        : Results.BadRequest("Hata oluştu");
 });
 app.Run();
 
@@ -138,8 +143,6 @@ public record AdminLoginRequest(
 );
 public record PassUpdateRequest(
     string Username,
-    string Phone,
-    string Email,
     string Pass,
     string PassRepeat
 );

@@ -93,7 +93,7 @@
         }
       }
     },
-    "/PassUpdate": {
+    "/updatepass": {
       "post": {
         "tags": [
           "SeneOdev"
@@ -102,7 +102,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PassUpdateRequest"
+                "$ref": "#/components/schemas/PassUpdate"
               }
             }
           },
@@ -150,26 +150,18 @@
         },
         "additionalProperties": false
       },
-      "PassUpdateRequest": {
+      "PassUpdate": {
         "type": "object",
         "properties": {
           "username": {
             "type": "string",
             "nullable": true
           },
-          "phone": {
+          "newPass": {
             "type": "string",
             "nullable": true
           },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "pass": {
-            "type": "string",
-            "nullable": true
-          },
-          "passRepeat": {
+          "newPassRepeat": {
             "type": "string",
             "nullable": true
           }

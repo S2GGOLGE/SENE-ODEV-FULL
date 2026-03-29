@@ -10,7 +10,8 @@
 /* Genel stil */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: var(--deep-black); /* Açık gri yerine tam siyah */
+    background-color: var(--deep-black);
+    /* Açık gri yerine tam siyah */
     margin: 0;
     padding: 0;
     color: var(--white);
@@ -27,7 +28,8 @@ body {
 
 /* KUTULAR - Neon Etkili */
 .kutu {
-    background-color: var(--dark-grey); /* Ana kutu rengi */
+    background-color: var(--dark-grey);
+    /* Ana kutu rengi */
     border: 1px solid #333;
     color: var(--white);
     padding: 15px 25px;
@@ -49,11 +51,13 @@ body {
 /* HOVER EFEKTİ - Neon Parlama */
 .kutu:hover {
     background-color: var(--dark-grey);
-    border-color: var(--neon-lime); /* Kenarlık neon yeşile döner */
+    border-color: var(--neon-lime);
+    /* Kenarlık neon yeşile döner */
     transform: scale(1.08);
     box-shadow: 0 0 20px var(--neon-glow);
 }
 
 .kutu:hover a {
-    color: var(--neon-lime); /* Yazı neon yeşile döner */
+    color: var(--neon-lime);
+    /* Yazı neon yeşile döner */
 }
