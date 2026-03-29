@@ -97,8 +97,6 @@ app.MapPost("/adminlogin", ([FromBody] AdminLoginRequest request) =>
 
     return Results.BadRequest(new { success = false, message = sonuc });
 });
-
-// SUNUCU ENDPOINT (henüz hazır değil)
 // MapGet yerine MapPost yapıyoruz
 app.MapPost("/sunucu", ([FromBody] AdminLoginRequest request) =>
 {
@@ -109,24 +107,9 @@ app.MapPost("/sunucu", ([FromBody] AdminLoginRequest request) =>
 });
 
 // PassUpdate ENDPOINT
-app.MapPost("/PassUpdate", ([FromBody]PassUpdateRequest request) =>
+app.MapPost(" /PassUpdate", ([FromBody]PassUpdateRequest request) =>
 {
-    Console.WriteLine("ŞİFRE YENİLEME İSTEĞİ GELDİ");
-    Console.WriteLine($"Username:{request.Username}");
-    Console.WriteLine($"Phone:{request.Phone}");
-    Console.WriteLine($"Email:{request.Email}");
-    Console.WriteLine($"New Pass:{request.Pass}");
-    Console.WriteLine($"New PassRepeat:{request.PassRepeat}");
-    var user = new Pass_Update
-    {
-        Password = request.Pass,
-        PasswordRepeat = request.PassRepeat
-    };
-    bool sonuc = user.Update();
-    if(sonuc)
-        return Results.Ok(new { success = true, message = "Yeni Şifreniz İle Giriş Yapabilirsiniz" });
 
-    return Results.BadRequest(new { success = false, message = "Guncelleme  başarısız" });
 });
 app.Run();
 

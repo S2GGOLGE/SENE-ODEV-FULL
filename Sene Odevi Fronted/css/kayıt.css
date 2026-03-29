@@ -23,9 +23,17 @@ body {
 
 /* Arkaplan animasyonu */
 @keyframes bgAnim {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* SAYFA ORTALAMA */
@@ -42,7 +50,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 350px; /* Daha derli toplu bir genişlik */
+    width: 350px;
+    /* Daha derli toplu bir genişlik */
     padding: 30px;
     background: var(--dark-grey);
     border: 1px solid #333;
@@ -52,8 +61,15 @@ body {
 }
 
 @keyframes formAnim {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Cinsiyet alanı */
@@ -111,13 +127,15 @@ body {
     height: 60px;
     display: flex;
     align-items: center;
-    background: transparent; /* Arka plan kaldırıldı */
+    background: transparent;
+    /* Arka plan kaldırıldı */
     padding-left: 20px;
     animation: fadeDown 0.7s ease;
 }
 
 .menu a {
-    color: var(--neon-lime); /* Linkler neon yapıldı */
+    color: var(--neon-lime);
+    /* Linkler neon yapıldı */
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
@@ -127,6 +145,17 @@ body {
 .menu a:hover {
     text-shadow: 0 0 8px var(--neon-glow);
     transform: translateX(5px);
+}
+
+.sozlesme {
+    display: flex;
+    justify-content: flex-start;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--neon-lime);
 }
 
 /* FOOTER */
@@ -140,11 +169,25 @@ footer {
 
 /* FADE ANİMASYONLARI */
 @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-40px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
