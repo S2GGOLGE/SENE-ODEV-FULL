@@ -1,7 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace SeneOdev
 {
@@ -14,39 +12,32 @@ namespace SeneOdev
         private readonly string connstring =
             "Data Source=EMREE\\SQLEXPRESS;Initial Catalog=Sene_Odevi;Integrated Security=True;Encrypt=False";
 
-        public bool Update()
+        public (bool success, string message) Update()
         {
             try
             {
-                // 🔐 Şifreler eşleşiyor mu
                 if (NewPass != NewPassRepeat)
-                    return false;
+                    return (false, "Şifreler eşleşmiyor.");
 
                 using var baglanti = new SqlConnection(connstring);
                 baglanti.Open();
 
-                string islem = "UPDATE Kullanici SET [PasswordHash] = @PasswordHash WHERE Username = @Username";
+                string islem = "UPDATE Kullanici SET [PasswordHash] = @Password WHERE Username = @Username";
 
                 using var cmd = new SqlCommand(islem, baglanti);
-
-                cmd.Parameters.Add("@PasswordHash", SqlDbType.NVarChar, 250).Value = HashPassword(NewPass);
+                cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 250).Value = NewPass;
                 cmd.Parameters.Add("@Username", SqlDbType.NVarChar, 100).Value = Username;
 
-                return cmd.ExecuteNonQuery() > 0;
+                bool updated = cmd.ExecuteNonQuery() > 0;
+                return updated
+                    ? (true, "Şifre başarıyla güncellendi.")
+                    : (false, "Kullanıcı bulunamadı.");
             }
             catch (Exception ex)
             {
                 Console.WriteLine("HATA: " + ex.Message);
-                return false;
+                return (false, "Sunucu hatası oluştu.");
             }
-        }
-
-        // 🔐 Basit hash (şimdilik yeterli)
-        private string HashPassword(string password)
-        {
-            using var sha256 = SHA256.Create();
-            var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-            return Convert.ToBase64String(bytes);
         }
     }
 }

@@ -106,15 +106,23 @@ app.MapPost("/sunucu", ([FromBody] AdminLoginRequest request) =>
     return Results.Ok(new { message = sonuc });
 });
 
-// PassUpdate ENDPOINT
 app.MapPost("/updatepass", (PassUpdate model) =>
 {
-   
-    var result = model.Update();
+    if (model == null)
+    {
+        Console.WriteLine("MODEL NULL GELDİ! JSON bind olmadı");
+        return Results.BadRequest(new { success = false, message = "Geçersiz veri." });
+    }
 
-    return result
-        ? Results.Ok("Şifre güncellendi")
-        : Results.BadRequest("Hata oluştu");
+    Console.WriteLine($"Username: {model.Username}, NewPass: {model.NewPass}, NewPassRepeat: {model.NewPassRepeat}");
+
+    var (success, message) = model.Update();
+
+    Console.WriteLine(success ? "UPDATE BAŞARILI ✅" : "UPDATE BAŞARISIZ ❌");
+
+    return success
+        ? Results.Ok(new { success = true, message = message })
+        : Results.BadRequest(new { success = false, message = message });
 });
 app.Run();
 
