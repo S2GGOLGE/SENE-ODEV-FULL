@@ -44,7 +44,7 @@ function kayit() {
 
     console.log("DATA:", data);
 
-    fetch("https://localhost:7074/sign_up", {
+    fetch("http://localhost:7074/sign_up", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

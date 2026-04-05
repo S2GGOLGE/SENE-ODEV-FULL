@@ -22,10 +22,13 @@ namespace SeneOdev
                 using var baglanti = new SqlConnection(connstring);
                 baglanti.Open();
 
-                string islem = "UPDATE Kullanici SET [PasswordHash] = @Password WHERE Username = @Username";
+                string islem = "UPDATE Kullanici SET [PasswordHash] = @Password, Salt = @Salt WHERE Username = @Username";
+                string salt = hash.GenereateSalt();
+                string hashedPasword = hash.Hash(NewPass, salt);
 
                 using var cmd = new SqlCommand(islem, baglanti);
-                cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 250).Value = NewPass;
+                cmd.Parameters.Add("@Password", SqlDbType.NVarChar, 250).Value = hashedPasword;
+                cmd.Parameters.Add("@Salt", SqlDbType.NVarChar, 128).Value = salt;
                 cmd.Parameters.Add("@Username", SqlDbType.NVarChar, 100).Value = Username;
 
                 bool updated = cmd.ExecuteNonQuery() > 0;
